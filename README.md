@@ -5,7 +5,7 @@ Basic Django app based in graphene-django cookbook example app (https://github.c
 # Some example queries
 
 ## See all schema types
-### Query
+### Query:
 ```graphql
 {
     __schema {
@@ -17,6 +17,7 @@ Basic Django app based in graphene-django cookbook example app (https://github.c
 ```
 
 ## See all objects of type ingredient
+### Query:
 ```graphql
 {
     allIngredients {
@@ -30,9 +31,24 @@ Basic Django app based in graphene-django cookbook example app (https://github.c
 }
 ```
 
+## Using an alias for all ingredients result
+### Query:
+```graphql
+{
+    ingredients: allIngredients {
+        edges {
+            node {
+                id
+                name
+            }
+        }
+    }
+}
+```
+
 
 ## A simple query with one operation
-### Query
+### Query:
 ```graphql
 ingredient(id:"SW5ncmVkaWVudE5vZGU6MQ==") {
     name
@@ -41,7 +57,7 @@ ingredient(id:"SW5ncmVkaWVudE5vZGU6MQ==") {
 ```
 
 ## Two operations with variables (operationName must be expecified)
-### Query
+### Query:
 ```graphql
 query getIngredientName($identifier: ID!) {
     ingredient(id:$identifier) {
@@ -55,7 +71,7 @@ query getIngredientNotes($identifier: ID!) {
     }
 }
 ```
-### Variables
+### Variables:
 ```json
 {
     "identifier": "SW5ncmVkaWVudE5vZGU6MQ=="
